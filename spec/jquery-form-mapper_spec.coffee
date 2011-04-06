@@ -1,4 +1,4 @@
-describe "FormMapper as a JQuery plugin", () ->
+describe "FormMapper JQuery plugin", () ->
   beforeEach () ->
     @form = $("form")
   
