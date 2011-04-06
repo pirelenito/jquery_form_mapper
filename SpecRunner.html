@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
+  <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="lib/jasmine/jasmine-jquery-1.2.0.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="dist/form_mapper.js"></script>
+  <script type="text/javascript" src="dist/jquery-form-mapper.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec.js/form_mapper_spec.js"></script>
+  <script type="text/javascript" src="spec.js/jquery-form-mapper_spec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+  jasmine.getFixtures().fixturesPath = "spec/fixtures"
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+<form id="fixture" style="display: none;">
+  <input value="unrooted value">
+  <input id="root-input" value="root property value" name="root[root_property]">
+  <input id="nested-input" value="nested property value" name="root[nested][nested_property]">
+  
+  <input id="root-radio-1" value="checked radio" name="root[radio]" type="radio" checked="checked">
+  <input id="root-radio-2" value="unchecked radio" name="root[radio]" type="radio">
+</form>
+
+</body>
+</html>
