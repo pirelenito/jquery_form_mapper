@@ -1,10 +1,10 @@
-describe "FormMapper as a JQuery plugin", () ->
+describe "FormMapper", () ->
   beforeEach () ->
-    @form = $("form")
+    @mapper = new FormMapper $("form")
   
   describe "as Values", () ->
     beforeEach () ->
-      @data = @form.values()
+      @data = @mapper.asValues()
     
     it "should load root property", () ->
       expect(@data.root.root_property).toEqual "root property value"
@@ -17,10 +17,11 @@ describe "FormMapper as a JQuery plugin", () ->
 
   describe "as Inputs", () ->
     beforeEach () ->
-      @data = @form.inputs()
+      @data = @mapper.asInputs()
 
     it "should load root property", () ->
       expect(@data.root.root_property).toBe "#root-input"
       
     it "should load nested property", () ->
-      expect(@data.root.nested.nested_property).toBe "#nested-input"  
+      expect(@data.root.nested.nested_property).toBe "#nested-input"
+    
