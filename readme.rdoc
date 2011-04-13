@@ -1,0 +1,43 @@
+= Form Mapper
+
+A handy jQuery plugin to read all inputs of a form's as a Javascript Object that has the same "structure" as the Rails domain.
+
+For example, given the form:
+
+  <form id="fixture" style="display: none;">
+    <input value="pirelenito" name="user[login]">
+    <input value="55 48 0000-9999" name="user[phone_number_attributes][mobile]">
+  
+    <input value="admin" name="user[type]" type="radio" checked="checked">
+    <input value="manager" name="user[type]" type="radio">
+  </form>
+  
+Using the plugin:
+  
+  $("#fixture").values()
+  
+would return the Javascript object:
+
+  user {
+    login: 'pirelenito'
+    type: 'admin'
+    phone_numbers: {
+      mobilde: '55 48 0000-9999'
+    }
+  }
+  
+= Usage
+
+Since the source is on Coffeescript you will need to compile it before use.
+
+Simply clone the repository and:
+
+  ./recompile.sh
+  
+You will need the coffeescript compiler in your path.
+
+Then copy the files created inside the dist folder to your project.
+
+= Testing
+
+The tests, which are using the excelent Jasmine framework, are also written in Coffescript, so a compilation is required before running them.
