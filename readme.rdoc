@@ -41,3 +41,7 @@ Then copy the files created inside the dist folder to your project.
 = Testing
 
 The tests, which are using the excelent Jasmine framework, are also written in Coffescript, so a compilation is required before running them.
+
+= Collaborators
+
+* Leandro S Santos
