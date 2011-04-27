@@ -14,6 +14,10 @@ describe "FormMapper", () ->
      
     it "should load the checked value of radio", () ->
       expect(@data.root.radio).toEqual "checked radio"
+      
+    it "should load property within a div", () ->
+      expect(@data.root.within_div).toEqual "input within div value"
+  
 
   describe "as Inputs", () ->
     beforeEach () ->

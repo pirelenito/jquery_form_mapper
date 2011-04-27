@@ -10,7 +10,7 @@ class FormMapper
   
   map: (valueAsInputs)->
     object = {}
-    for input in @formObject.children "input"
+    for input in @formObject.find "input"
       continue if $(input).is("input[type='radio']") and !$(input).is(":checked")
       propertyNames = input.name.match(/\w+/g) || []
       value = if valueAsInputs then $(input) else $(input).val()
