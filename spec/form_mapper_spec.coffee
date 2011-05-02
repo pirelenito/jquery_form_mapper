@@ -4,7 +4,8 @@ describe "FormMapper", () ->
   
   describe "as Values", () ->
     beforeEach () ->
-      @data = @mapper.asValues()
+      @data = @mapper.values()
+      console.log @data
     
     it "should load root property", () ->
       expect(@data.root.root_property).toEqual "root property value"
@@ -21,7 +22,7 @@ describe "FormMapper", () ->
 
   describe "as Inputs", () ->
     beforeEach () ->
-      @data = @mapper.asInputs()
+      @data = @mapper.inputs()
 
     it "should load root property", () ->
       expect(@data.root.root_property).toBe "#root-input"

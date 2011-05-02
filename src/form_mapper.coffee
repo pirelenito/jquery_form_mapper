@@ -2,24 +2,33 @@ class FormMapper
   constructor: (formObject) ->
     @formObject = formObject
     
-  asValues: ->
-    @map(false)
+  values: ->
+    @crawl (input) ->
+      $(input).val()
     
-  asInputs: ->
-    @map(true)
+  inputs: ->
+    @crawl (input) ->
+      $(input)
   
-  map: (valueAsInputs)->
+  crawl: (map) ->
     object = {}
     for input in @formObject.find "input"
-      continue if $(input).is("input[type='radio']") and !$(input).is(":checked")
-      propertyNames = input.name.match(/\w+/g) || []
-      value = if valueAsInputs then $(input) else $(input).val()
-      @setProperty(object, propertyNames, value) if (propertyNames.length > 0)
+      @setProperty(object, @propertyNames(input), map(input)) if @shouldRead input 
     return object
+
+  shouldRead: (input) ->
+    not $(input).is("input[type='radio']") or
+    $(input).is("input[type='radio']") and $(input).is(":checked")
+    
+  propertyNames: (input) ->
+    for name in (input.name.match(/\w+/g) || [])
+      name.replace "_attributes", ""
   
-  setProperty: (object, propertyNames, value, depth=0) ->
-    name = propertyNames[depth].replace("_attributes", "")
-    if depth == (propertyNames.length-1)
+  setProperty: (object, propertyNames, value, depth=0) ->  
+    return unless propertyNames.length > 0
+    name = propertyNames[depth]
+    
+    if depth >= (propertyNames.length-1)
       object[name] = value
     else
       object[name] = {} unless object[name] 

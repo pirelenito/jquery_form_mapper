@@ -1,6 +1,6 @@
 do ($ = jQuery) ->
   $.fn.values = -> 
-    new FormMapper(this).asValues()
+    new FormMapper(this).values()
     
   $.fn.inputs = -> 
-    new FormMapper(this).asInputs()
+    new FormMapper(this).inputs()
